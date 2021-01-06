@@ -1,0 +1,11 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+
+keycloak:
+  realm: blog
+  auth-server-url: http://localhost:8079/auth
+  credentials:
+    secret: bb792b2a-6836-4dfc-966c-7fac13a0d660
+  resource: comment-service
+

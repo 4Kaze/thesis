@@ -22,7 +22,7 @@ class ArticleService(private val articleRepository: ArticleRepository, private v
 
     fun delete(articleId: ArticleId, authorId: AuthorId, force: Boolean) {
         val article = articleRepository.findById(articleId) ?: throw ArticleNotFoundException(articleId)
-        if(!force) validateAuthorship(article, authorId)
+        if (!force) validateAuthorship(article, authorId)
         articleRepository.delete(articleId)
     }
 

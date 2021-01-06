@@ -1,12 +1,7 @@
 package pl.lodz.p.stanczyk.articleservice.adapter
 
 import org.springframework.data.domain.PageRequest
-import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
-import org.springframework.data.mongodb.core.MongoTemplate
-import org.springframework.data.mongodb.core.query.Criteria
-import org.springframework.data.mongodb.core.query.Query
-import org.springframework.data.mongodb.core.query.isEqualTo
 import org.springframework.data.mongodb.repository.MongoRepository
 import pl.lodz.p.stanczyk.articleservice.domain.Article
 import pl.lodz.p.stanczyk.articleservice.domain.ArticleId

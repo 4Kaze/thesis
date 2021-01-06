@@ -1,8 +1,8 @@
 package pl.lodz.p.stanczyk.articleservice.adapter.api
 
 import pl.lodz.p.stanczyk.articleservice.domain.Article
-import pl.lodz.p.stanczyk.articleservice.domain.AuthorId
 import pl.lodz.p.stanczyk.articleservice.domain.ArticleDraft
+import pl.lodz.p.stanczyk.articleservice.domain.AuthorId
 import java.time.Instant
 import java.util.UUID
 import javax.validation.constraints.NotBlank

@@ -1,4 +1,4 @@
-package pl.lodz.p.stanczyk.articleservice.config
+package pl.lodz.p.stanczyk.commentservice.config
 
 import org.keycloak.adapters.KeycloakConfigResolver
 import org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver
@@ -39,8 +39,9 @@ class SecurityConfig : KeycloakWebSecurityConfigurerAdapter() {
         super.configure(http)
         http
             .authorizeRequests()
-            .antMatchers(HttpMethod.GET, "/articles", "/articles/*").permitAll()
-            .antMatchers("/articles", "/articles/**").hasAnyRole("writer", "admin")
+            .antMatchers(HttpMethod.GET, "/articles/*/comments").permitAll()
+            .antMatchers(HttpMethod.DELETE, "/articles/*/comments/*").hasAnyRole("admin", "reader")
+            .antMatchers(HttpMethod.POST, "/articles/*/comments").hasRole("reader")
             .anyRequest().denyAll()
             .and().csrf().disable()
     }
