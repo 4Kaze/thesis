@@ -1,0 +1,17 @@
+services:
+    article:
+        url: service://article-service
+    comment:
+        url: service://comment-service
+    user:
+        url: service://user-service
+
+keycloak:
+    realm: blog
+    auth-server-url: http://localhost:8081/auth
+    resource: gateway-service
+    credentials:
+        secret: bb792b2a-6836-4dfc-966c-7fac13a0d660
+    bearer-only: true
+    public-client: true
+    principal-attribute: preferred_username

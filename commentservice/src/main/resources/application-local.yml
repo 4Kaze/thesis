@@ -1,6 +1,19 @@
+server:
+  port : 8082
+
 spring.data.mongodb:
   port: 27017
   host: localhost
   username: admin
   password: password
   authentication-database: admin
+
+keycloak:
+  realm: blog
+  auth-server-url: http://localhost:8081/auth
+  resource: article-service
+  credentials:
+    secret: 748a2d12-28ef-40aa-8d38-cd8afb1e9c2d
+  bearer-only: true
+  public-client: true
+  principal-attribute: preferred_username

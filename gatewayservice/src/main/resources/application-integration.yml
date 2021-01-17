@@ -1,0 +1,14 @@
+services:
+    article:
+        url: http://localhost:8079/article-service
+    comment:
+        url: http://localhost:8079/comment-service
+    user:
+        url: http://localhost:8079/user-service
+
+keycloak:
+    realm: blog
+    auth-server-url: http://localhost:8079/auth
+    credentials:
+        secret: bb792b2a-6836-4dfc-966c-7fac13a0d660
+    resource: gateway-service

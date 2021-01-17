@@ -1,0 +1,5 @@
+zuul:
+  routes:
+    article:
+      path: /articles/**
+      url: http://localhost:8079/article-service/articles

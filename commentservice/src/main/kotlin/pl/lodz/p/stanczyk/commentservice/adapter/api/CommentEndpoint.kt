@@ -44,7 +44,7 @@ class CommentEndpoint(val commentService: CommentService) {
         path = ["/articles/{articleId}/comments/{commentId}"]
     )
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    fun addComment(
+    fun deleteComment(
         @PathVariable articleId: UUID,
         @PathVariable commentId: UUID,
         authentication: Authentication
