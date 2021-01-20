@@ -1,17 +1,17 @@
 services:
     article:
-        url: service://article-service
+        url: http://article-service
     comment:
-        url: service://comment-service
+        url: http://comment-service
     user:
-        url: service://user-service
+        url: http://user-service
 
 keycloak:
     realm: blog
-    auth-server-url: http://localhost:8081/auth
+    auth-server-url: http://sso:8443
     resource: gateway-service
     credentials:
-        secret: bb792b2a-6836-4dfc-966c-7fac13a0d660
+        secret: ${SSO_SECRET}
     bearer-only: true
     public-client: true
     principal-attribute: preferred_username
