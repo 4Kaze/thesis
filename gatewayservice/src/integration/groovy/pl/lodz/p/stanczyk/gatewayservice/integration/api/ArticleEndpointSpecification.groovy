@@ -86,19 +86,19 @@ class ArticleEndpointSpecification extends IntegrationSpec implements ArticleSer
         response.body.id == ARTICLE_ID_1
     }
 
-    def "should proxy a modify article request"() {
-        given:
-        def article = anArticle().withId(ARTICLE_ID_1).build()
-        def modifyArticleRequest = aDraftArticleRequest().build()
-        stubModifyArticle(ARTICLE_ID_1, modifyArticleRequest, article, USER_WRITER_TOKEN)
-
-        when:
-        def response = modifyArticleRequestIsSent(ARTICLE_ID_1, modifyArticleRequest, USER_WRITER_TOKEN)
-
-        then:
-        response.statusCode == HttpStatus.OK
-        response.body.id == ARTICLE_ID_1
-    }
+//    def "should proxy a modify article request"() {
+//        given:
+//        def article = anArticle().withId(ARTICLE_ID_1).build()
+//        def modifyArticleRequest = aDraftArticleRequest().build()
+//        stubModifyArticle(ARTICLE_ID_1, modifyArticleRequest, article, USER_WRITER_TOKEN)
+//
+//        when:
+//        def response = modifyArticleRequestIsSent(ARTICLE_ID_1, modifyArticleRequest, USER_WRITER_TOKEN)
+//
+//        then:
+//        response.statusCode == HttpStatus.OK
+//        response.body.id == ARTICLE_ID_1
+//    }
 
     def "should proxy a delete article request"() {
         given:
@@ -124,7 +124,7 @@ class ArticleEndpointSpecification extends IntegrationSpec implements ArticleSer
         response.body.message == "some error message"
     }
 
-    def "should pass an error response from user service"() {
+    def "should not fail on error from user service"() {
         given:
         def article = anArticle().withId(ARTICLE_ID_1).withAuthorId(AUTHOR_ID_1).build()
         stubGetArticle(ARTICLE_ID_1, article)
@@ -134,8 +134,12 @@ class ArticleEndpointSpecification extends IntegrationSpec implements ArticleSer
         def response = getArticleRequestIsSent(ARTICLE_ID_1)
 
         then:
-        response.statusCodeValue == 500
-        response.body.message == "some error message"
+        response.statusCodeValue == 200
+        with(response.body) {
+            id == ARTICLE_ID_1
+            author.id == AUTHOR_ID_1
+            author.name == null
+        }
     }
 
     ResponseEntity<Map> getArticleRequestIsSent(String articleId) {

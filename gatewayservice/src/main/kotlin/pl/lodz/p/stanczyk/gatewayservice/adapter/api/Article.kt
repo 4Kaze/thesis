@@ -31,7 +31,7 @@ data class ArticleJsonResponse(
             publicationDate = article.publicationDate,
             author = AuthorJsonResponse(
                 id = article.author.id,
-                name = article.author.name ?: "Unknown"
+                name = article.author.name
             )
         )
     }
@@ -39,7 +39,7 @@ data class ArticleJsonResponse(
 
 data class AuthorJsonResponse(
     val id: UUID,
-    val name: String
+    val name: String?
 )
 
 data class ArticleListJsonResponse(

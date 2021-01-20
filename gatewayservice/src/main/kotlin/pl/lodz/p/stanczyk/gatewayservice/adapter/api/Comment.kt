@@ -32,12 +32,12 @@ data class CommentJsonResponse(
 
 data class AuthorJsonResponse(
     val id: UUID,
-    val name: String
+    val name: String?
 ) {
     companion object {
         fun from(author: Author) = AuthorJsonResponse(
             id = author.id,
-            name = author.name ?: "Unknown"
+            name = author.name
         )
     }
 }

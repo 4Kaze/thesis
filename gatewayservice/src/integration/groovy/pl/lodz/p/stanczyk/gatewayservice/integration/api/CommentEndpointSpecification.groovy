@@ -106,6 +106,25 @@ class CommentEndpointSpecification extends IntegrationSpec implements CommentSer
         response.body.message == "some error message"
     }
 
+    def "should not fail when userservice responds with an error"() {
+        given:
+        def comment1 = aComment().withId(COMMENT_ID_1).withAuthorId(AUTHOR_ID_1)
+        stubGetArticle(ARTICLE_ID_1, anArticle().build(), 200)
+        stubGetComments(ARTICLE_ID_1, 1, 10, aCommentsList().withComments([comment1]).build())
+        stubGetUsers([AUTHOR_ID_1], ["message": "some error"], 500)
+
+        when:
+        def response = getCommentsRequestIsSent(ARTICLE_ID_1, 1, 10)
+
+        then:
+        response.statusCode == HttpStatus.OK
+        with(response.body.comments[0]) {
+            id == COMMENT_ID_1
+            author.id == AUTHOR_ID_1
+            author.name == null
+        }
+    }
+
     ResponseEntity<Map> getCommentsRequestIsSent(String articleId, int page, int pageSize) {
         restTemplate.getForEntity(url("/articles/$articleId/comments?page=$page&pageSize=$pageSize"), Map)
     }
