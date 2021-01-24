@@ -8,7 +8,7 @@ services:
 
 keycloak:
     realm: blog
-    auth-server-url: http://sso-service:8443
+    auth-server-url: ${SSO_ADDRESS}
     resource: gateway-service
     credentials:
         secret: ${SSO_SECRET}
