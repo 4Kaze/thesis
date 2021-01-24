@@ -1,6 +1,6 @@
 keycloak:
   realm: blog
-  auth-server-url: http://sso:8443
+  auth-server-url: http://sso-service:8443
   resource: article-service
   credentials:
     secret: ${SSO_SECRET}
