@@ -22,3 +22,4 @@ server:
         key-store: file:/mnt/certs/keystore.p12
         key-store-password: ${SSL_KEYSTORE_PASSWORD}
         key-alias: ${SSL_KEYSTORE_ALIAS}
+        enabled: false
