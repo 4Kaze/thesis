@@ -16,10 +16,8 @@ keycloak:
     public-client: true
     principal-attribute: preferred_username
 
-server:
-    ssl:
-        key-store-type: PKCS12
-        key-store: file:/mnt/certs/keystore.p12
-        key-store-password: ${SSL_KEYSTORE_PASSWORD}
-        key-alias: ${SSL_KEYSTORE_ALIAS}
-        enabled: false
+ssl:
+    key-store:
+        path: ${KEYSTORE_PATH}
+        password: ${SSL_KEYSTORE_PASSWORD}
+        alias: ${SSL_KEYSTORE_ALIAS}
