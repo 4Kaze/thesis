@@ -13,7 +13,7 @@ class SSLConfig(
 ) {
     @PostConstruct
     private fun configureSSL() {
-        System.setProperty("javax.net.ssl.keyStore", path)
-        System.setProperty("javax.net.ssl.keyStorePassword", password)
+        System.setProperty("javax.net.ssl.trustStore", path)
+        System.setProperty("javax.net.ssl.trustStorePassword", password)
     }
 }
