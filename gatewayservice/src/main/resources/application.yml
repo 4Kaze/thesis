@@ -22,3 +22,8 @@ ssl:
         path: ${KEYSTORE_PATH}
         password: ${SSL_KEYSTORE_PASSWORD}
         alias: ${SSL_KEYSTORE_ALIAS}
+
+logging.level:
+    org.springframework: DEBUG
+    org.hibernate: DEBUG
+    org.keycloak: TRACE
